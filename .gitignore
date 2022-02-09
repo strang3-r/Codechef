@@ -34,3 +34,5 @@
 #folder
 *.cph
 *.vscode
+
+*:tests

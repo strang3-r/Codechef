@@ -1,7 +1,5 @@
-// AllDiv3.cpp
-		/*Coded By Mr. Black-D3vil*/
+/*Coded By Mr. Black-D3vil*/
 #include <bits/stdc++.h>
-#include <cassert>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
@@ -34,15 +32,26 @@ typedef tree<pair<int, int>, null_type, less<pair<int, int>>, rb_tree_tag, tree_
 
 const ll maxn = 1e5 + 5;
 
-    
-void file_i_o(){
+
+void file_i_o() {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
-	#ifndef ONLINE_JUDGE
-		freopen("//home//black-devil//Desktop///InputOutput//input.txt", "r", stdin);
-		freopen("//home//black-devil//Desktop//InputOutput//output.txt", "w", stdout);
-	#endif
+	/* #ifndef ONLINE_JUDGE
+			freopen("//home//blackd3vil//Desktop///InputOutput//input.txt", "r", stdin);
+			freopen("//home//blackd3vil//Desktop//InputOutput//output.txt", "w", stdout);
+		#endif */
+}
+
+int nsum(ll n) {
+
+	if(n == 1 or n == 0) return n;
+
+	ll sum = nsum(n - 1);
+
+	sum += n;
+
+	return sum;
 }
 
 
@@ -52,54 +61,19 @@ int main(int argc, char const *argv[])
 	file_i_o();
 
 	clock_t start, end;
-    start = clock();
+	start = clock();
 
-    // precompute();
+	ll n;
 
-	w(t){
+	cin >> n;
 
-		int n;
-		cin >> n;
-		int A = 0, B = 0;
-		int temp;
-		for(int i = 0; i < n; i++) {
-			cin >> temp;
-			if(temp % 3 == 1) {
-				A++;
-			}
-			if(temp % 3 == 2) {
-				B++;
-			}
-		}
-		int ans = 0;
-		if(A > B) {
-			ans += B;
-			A -= B;
-			B = 0;
-		} else {
-			ans += A;	
-			B -= A;
-			A = 0;
-		} 
-		bool flag = false;
-		if(A % 3 == 0 && B % 3 == 0) {
-			ans += ((A/3)*2 + (B/3)*2);
-			flag = true;
-		}
-		if(flag) {
-			cout << ans <<endl;
-		} else {
-			cout << -1 <<endl;
-		}
-		
-	}
-
+	cout << nsum(n) << endl;
 
 	end = clock();
-	
-	double time_taken=double(end-start)/double(CLOCKS_PER_SEC);
-    cerr<<"\nTime : "<<fixed<<time_taken<<setprecision(5)<<" s \n";
-    cerr<<"Coded by Mr. Black-D3vil"<<endl;
+
+	double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+	cerr << "\nTime : " << fixed << time_taken << setprecision(5) << " s \n";
+	cerr << "Coded by Mr. Black-D3vil" << endl;
 
 	return 0;
 }
